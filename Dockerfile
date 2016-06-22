@@ -15,10 +15,6 @@ RUN curl -sSL https://get.docker.com/ | sh
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
-# Define additional metadata for our image.
-VOLUME /var/lib/docker
-CMD ["wrapdocker"]
-
 RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
 RUN useradd test -d /home/test && \
@@ -38,3 +34,8 @@ RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl 
 
 ADD ./setup_vnc /tmp/setup_vnc
 RUN bash /tmp/setup_vnc
+
+# Define additional metadata for our image.
+VOLUME /var/lib/docker
+ENTRYPOINT ["wrapdocker"]
+
