@@ -67,7 +67,7 @@ RUN chmod +x /tmp/preload_maven
 #RUN sudo -u test /tmp/preload_maven
 
 RUN groupadd docker || true
-RUN gpasswd -a test docker
+RUN usermod -aG docker test
 RUN echo "test  ALL=(ALL)   NOPASSWD: ALL" >> /etc/sudoers
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
