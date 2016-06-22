@@ -44,6 +44,8 @@ RUN apt-get update -qqy \
   xfonts-scalable \
   xfonts-cyrillic
 
+RUN apt-get -y install dbus dbus-devel dbus-x11
+RUN dbus-uuidgen --ensure
 
 RUN groupadd docker || true
 RUN gpasswd -a test docker
