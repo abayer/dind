@@ -64,7 +64,7 @@ ENV MAVEN_HOME /usr/share/maven
 
 ADD ./preload_maven /tmp/preload_maven
 RUN chmod +x /tmp/preload_maven
-#RUN sudo -u test /tmp/preload_maven
+RUN sudo -u test /tmp/preload_maven
 
 RUN groupadd docker || true
 RUN usermod -aG docker test
@@ -74,7 +74,16 @@ ENV SCREEN_HEIGHT 1050
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
-RUN apt-get install -y zip dmsetup
+RUN apt-get install -y zip dmsetup supervisor
+# Create log folder for supervisor and docker
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /var/log/docker
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+ADD ./launch_wrapper /usr/local/bin/launch_wrapper
+RUN chmod +x /usr/local/bin/launch_wrapper
+
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
