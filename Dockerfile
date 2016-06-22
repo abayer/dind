@@ -87,5 +87,5 @@ RUN chmod +x /usr/local/bin/launch_wrapper
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
-ENTRYPOINT ["wrapdocker", "/bin/bash", "-c"]
+ENTRYPOINT ["/usr/local/bin/launch_wrapper"]
 
