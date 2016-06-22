@@ -46,7 +46,7 @@ RUN apt-get update -qqy \
   xfonts-scalable \
   xfonts-cyrillic
 
-RUN apt-get -y install dbus dbus-devel dbus-x11
+RUN apt-get -y install dbus libdbus-1-dev dbus-x11
 RUN dbus-uuidgen > /etc/machine-id
 
 RUN groupadd docker || true
