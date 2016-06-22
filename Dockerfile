@@ -33,7 +33,9 @@ RUN apt-get update
 RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl wget ant maven vnc4server make expect firefox
 
 ADD ./setup_vnc /tmp/setup_vnc
-RUN bash /tmp/setup_vnc
+RUN sudo -u test bash /tmp/setup_vnc
+RUN groupadd docker || true
+RUN gpasswd -a test docker
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
