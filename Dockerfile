@@ -1,5 +1,7 @@
 FROM selenium/standalone-firefox
 
+USER root
+
 # Let's start with some basic stuff.
 RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
