@@ -71,6 +71,8 @@ ENV SCREEN_HEIGHT 1050
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
+RUN apt-get install -y zip
+
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 ENTRYPOINT ["wrapdocker"]
