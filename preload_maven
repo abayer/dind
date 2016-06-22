@@ -1,5 +1,5 @@
 #!/bin/bash
-cd $HOME
+cd /home/test
 git clone git://github.com/jenkinsci/acceptance-test-harness.git
 cd acceptance-test-harness
 mvn clean install -DskipTests
