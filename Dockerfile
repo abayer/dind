@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
 USER root
 
 # Let's start with some basic stuff.
