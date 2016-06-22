@@ -1,0 +1,7 @@
+#!/bin/bash
+cd $HOME
+git clone git://github.com/jenkinsci/acceptance-test-harness.git
+cd acceptance-test-harness
+mvn clean install -DskipTests
+cd ..
+rm -rf acceptance-test-harness
