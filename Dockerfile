@@ -1,4 +1,4 @@
-FROM selenium:standalone-firefox
+FROM selenium/standalone-firefox
 
 # Let's start with some basic stuff.
 RUN apt-get update -qq && apt-get install -qqy \
