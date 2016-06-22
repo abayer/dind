@@ -1,4 +1,4 @@
-FROM selenium/standalone-firefox
+FROM ubuntu:16.04
 
 USER root
 
@@ -61,7 +61,7 @@ ENV MAVEN_HOME /usr/share/maven
 
 ADD ./preload_maven /tmp/preload_maven
 RUN chmod +x /tmp/preload_maven
-RUN sudo -u test /tmp/preload_maven
+#RUN sudo -u test /tmp/preload_maven
 
 RUN groupadd docker || true
 RUN gpasswd -a test docker
