@@ -32,7 +32,8 @@ RUN echo deb http://archive.ubuntu.com/ubuntu precise universe >> /etc/apt/sourc
 RUN apt-get install --no-install-recommends -y software-properties-common
 RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl wget ant vnc4server make expect firefox=45.0.2+build1-0ubuntu1
+RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk
+RUN apt-get install --no-install-recommends -y curl git wget ant vnc4server make expect firefox=45.0.2+build1-0ubuntu1
 
 RUN apt-get update -qqy \
   && apt-get -qqy install \
@@ -50,8 +51,6 @@ RUN apt-get -y install dbus libdbus-1-dev dbus-x11
 RUN dbus-uuidgen > /etc/machine-id
 
 ENV MAVEN_VERSION 3.3.9
-
-RUN apt-get update && apt-get install -y curl git && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
