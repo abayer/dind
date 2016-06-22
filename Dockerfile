@@ -32,7 +32,7 @@ RUN echo deb http://archive.ubuntu.com/ubuntu precise universe >> /etc/apt/sourc
 RUN apt-get install --no-install-recommends -y software-properties-common
 RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl wget ant maven vnc4server make expect firefox
+RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl wget ant vnc4server make expect firefox
 
 RUN apt-get update -qqy \
   && apt-get -qqy install \
