@@ -32,10 +32,28 @@ RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
 RUN apt-get install --no-install-recommends -y openjdk-8-jdk openjdk-7-jdk curl wget ant maven vnc4server make expect firefox
 
+RUN apt-get update -qqy \
+  && apt-get -qqy install \
+    x11vnc \
+    pyvnc2swf \
+    xvfb \
+    xorg \
+    xserver-xorg-video-dummy \
+      xfonts-100dpi \
+  xfonts-75dpi \
+  xfonts-scalable \
+  xfonts-cyrillic
+
+
 ADD ./setup_vnc /tmp/setup_vnc
 RUN sudo -u test bash /tmp/setup_vnc
 RUN groupadd docker || true
 RUN gpasswd -a test docker
+
+ENV SCREEN_WIDTH 1680
+ENV SCREEN_HEIGHT 1050
+ENV SCREEN_DEPTH 24
+ENV DISPLAY :99.0
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
