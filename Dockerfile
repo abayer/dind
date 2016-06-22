@@ -45,8 +45,6 @@ RUN apt-get update -qqy \
   xfonts-cyrillic
 
 
-ADD ./setup_vnc /tmp/setup_vnc
-RUN sudo -u test bash /tmp/setup_vnc
 RUN groupadd docker || true
 RUN gpasswd -a test docker
 
