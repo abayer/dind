@@ -64,7 +64,11 @@ ENV MAVEN_HOME /usr/share/maven
 
 ADD ./preload_maven /tmp/preload_maven
 RUN chmod +x /tmp/preload_maven
-RUN sudo -u test /tmp/preload_maven
+
+USER test
+RUN /tmp/preload_maven
+
+USER root
 
 RUN groupadd docker || true
 RUN usermod -aG docker test
