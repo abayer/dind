@@ -70,7 +70,8 @@ RUN /tmp/preload_maven
 
 USER root
 
-#RUN groupadd docker || true
+RUN groupadd docker || true
+RUN groupmod -g 1000 docker
 #RUN gpasswd -a test docker
 #RUN usermod -aG docker test
 

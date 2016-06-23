@@ -4,4 +4,6 @@ if [ -n "$DOCKER_GID_ON_HOST" ]; then sudo groupadd -g $DOCKER_GID_ON_HOST docke
 
 sudo /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 
+groups
+
 [[ $1 ]] && exec sudo -u test "$@"
