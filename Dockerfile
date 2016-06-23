@@ -71,7 +71,7 @@ RUN /tmp/preload_maven
 USER root
 
 RUN groupadd docker || true
-RUN usermod -aG docker test
+RUN gpasswd -a test docker
 
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
