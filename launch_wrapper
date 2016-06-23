@@ -2,4 +2,4 @@
 
 sudo /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 
-[[ $1 ]] && exec "$@"
+[[ $1 ]] && exec sudo -u test "$@"
