@@ -72,16 +72,17 @@ USER root
 
 RUN groupadd docker || true
 RUN usermod -aG docker test
-RUN echo "test  ALL=(ALL)   NOPASSWD: ALL" >> /etc/sudoers
+
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
 
-RUN apt-get install -y zip dmsetup supervisor
+RUN apt-get install -y zip dmsetup supervisor sudo
 # Create log folder for supervisor and docker
 RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/log/docker
+RUN echo "test  ALL=(ALL)   NOPASSWD: ALL" >> /etc/sudoers
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

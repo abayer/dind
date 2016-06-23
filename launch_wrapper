@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sudo /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
+sudo /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
 
 [[ $1 ]] && exec "$@"
