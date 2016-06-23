@@ -65,25 +65,10 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 
 ENV MAVEN_HOME /usr/share/maven
 
-ADD ./preload_maven /tmp/preload_maven
-RUN chmod +x /tmp/preload_maven
-
-USER test
-RUN /tmp/preload_maven
-
-USER root
-
-#RUN groupadd docker || true
-#RUN groupmod -g 1000 docker
-#RUN gpasswd -a test docker
-#RUN usermod -aG docker test
-
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
-
-ENV DOCKER_GID_ON_HOST ""
 
 
 RUN apt-get install -y zip dmsetup supervisor sudo
