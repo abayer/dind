@@ -20,6 +20,9 @@ RUN curl -sSL https://get.docker.com/ | sh
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
+RUN groupadd docker || true
+RUN groupmod -g 1000 docker
+
 RUN apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
 RUN useradd test -d /home/test && \
@@ -70,8 +73,8 @@ RUN /tmp/preload_maven
 
 USER root
 
-RUN groupadd docker || true
-RUN groupmod -g 1000 docker
+#RUN groupadd docker || true
+#RUN groupmod -g 1000 docker
 #RUN gpasswd -a test docker
 #RUN usermod -aG docker test
 
