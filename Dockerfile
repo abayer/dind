@@ -82,6 +82,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./launch_wrapper /usr/local/bin/launch_wrapper
 RUN chmod +x /usr/local/bin/launch_wrapper
 
+RUN touch /root/.cloudbees-license
 USER test
 
 # Define additional metadata for our image.
