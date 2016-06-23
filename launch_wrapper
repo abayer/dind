@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo gpasswd -a test docker
-sudo usermod -aG docker test
+#
+if [ -n "$DOCKER_GID_ON_HOST" ]; then sudo groupadd -g $DOCKER_GID_ON_HOST docker && sudo gpasswd -a test docker; fi;
 
 sudo /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf &
 

@@ -70,14 +70,17 @@ RUN /tmp/preload_maven
 
 USER root
 
-RUN groupadd docker || true
-RUN gpasswd -a test docker
-RUN usermod -aG docker test
+#RUN groupadd docker || true
+#RUN gpasswd -a test docker
+#RUN usermod -aG docker test
 
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
 ENV SCREEN_DEPTH 24
 ENV DISPLAY :99.0
+
+ENV DOCKER_GID_ON_HOST ""
+
 
 RUN apt-get install -y zip dmsetup supervisor sudo
 # Create log folder for supervisor and docker
