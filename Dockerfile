@@ -72,6 +72,7 @@ USER root
 
 RUN groupadd docker || true
 RUN gpasswd -a test docker
+RUN usermod -aG docker test
 
 ENV SCREEN_WIDTH 1680
 ENV SCREEN_HEIGHT 1050
@@ -89,6 +90,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD ./launch_wrapper /usr/local/bin/launch_wrapper
 RUN chmod +x /usr/local/bin/launch_wrapper
 
+USER test
 
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
